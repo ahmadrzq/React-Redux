@@ -1,13 +1,21 @@
 import { useEffect } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { increment, setName } from "./Redux/Reducers/TestReducer"
 
 function App() {
   const storeTest = useSelector(state => state.TestReducer)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     console.log(storeTest)
+    console.log('Setelah diupdate')
+    dispatch(increment())
+    dispatch(setName('Coba cuy'))
   }, [])
 
+  useEffect(() => {
+    console.log(storeTest)
+  }, [storeTest])
 
   return (
     <>
